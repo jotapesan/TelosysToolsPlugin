@@ -390,7 +390,7 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 		
 		// Grid layout with 3 columns
 		GridLayout gridLayout = new GridLayout ();
-		gridLayout.numColumns = 3;
+		gridLayout.numColumns = 4;
 		gridLayout.marginHeight = 12;
 		tabContent.setLayout(gridLayout);
 		
@@ -408,20 +408,19 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	private void createTabFolder1Panel1(Composite container) {
 		GridData gdPanel = new GridData();
 		gdPanel.verticalAlignment = SWT.BEGINNING ;
-		//gdPanel.widthHint = 400 ;
-		gdPanel.widthHint = 540 ;
+		gdPanel.widthHint = 600 ;		
 		
 		Composite panel = new Composite(container, SWT.NONE );
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
-		gridLayout.marginHeight = 12;
+		gridLayout.marginHeight = 2;
 		panel.setLayout(gridLayout);
 		panel.setLayoutData(gdPanel);
 
 		{
 			GridData gd = new GridData();
 			gd.verticalAlignment = SWT.BEGINNING ;
-			gd.widthHint = 540;
+			gd.widthHint = 480;
 
 		    _tId       = createTextWithLabel(panel, "Id",       gd, false ) ;  
 		    _tName     = createTextWithLabel(panel, "Name",     gd, true ) ;  
@@ -540,7 +539,7 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	private void createTabFolder2Panel1(Composite container) {
 		GridData gdPanel = new GridData();
 		gdPanel.verticalAlignment = SWT.BEGINNING ;
-		gdPanel.widthHint = 540 ; // "widthHint" specifies the preferred width in pixels 
+		gdPanel.widthHint = 650 ; // "widthHint" specifies the preferred width in pixels 
 		
 		Composite panel = new Composite(container, SWT.NONE );
 		GridLayout gridLayout = new GridLayout();
@@ -551,7 +550,7 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 
 		{
 			GridData gd = new GridData();
-			gd.widthHint = 540; // "widthHint" specifies the preferred width in pixels 
+			gd.widthHint = 500; // "widthHint" specifies the preferred width in pixels 
 			gd.verticalAlignment = SWT.BEGINNING ;
 
 		    _InfoProdName     = createTextWithLabel(panel, "Product name", gd, true) ;  
@@ -638,7 +637,7 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	private void createTabFolder3Panel1(Composite container) {
 		GridData gdPanel = new GridData();
 		gdPanel.verticalAlignment = SWT.BEGINNING ;
-		gdPanel.widthHint = 400 ;
+		gdPanel.widthHint = 600 ;
 		
 		Composite panel = new Composite(container, SWT.NONE );
 		GridLayout gridLayout = new GridLayout ();
@@ -649,7 +648,7 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 
 		{
 			GridData gd = new GridData();
-			gd.widthHint = 260;
+			gd.widthHint = 320;
 			gd.verticalAlignment = SWT.BEGINNING ;
 
 			_tMetaDataCatalog = createTextWithLabel(panel, "Catalog ('!' for null) ", gd, true );
@@ -693,6 +692,33 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 		GridData gd = new GridData();
 		gd.widthHint = 120;
 		gd.verticalAlignment = SWT.BEGINNING ;
+		
+		{
+			Button button = new Button(panel, SWT.NONE);
+			button.setText("Get catalogs");
+			button.setLayoutData(gd);
+	    	button.addSelectionListener( new SelectionListener() {
+	            public void widgetSelected(SelectionEvent arg0) {
+	            	actionGetMetaData(GET_CATALOGS);
+	            }
+	            public void widgetDefaultSelected(SelectionEvent arg0) {
+	            }
+	        });
+		}
+
+		{
+	    	Button button = new Button(panel, SWT.NONE);
+			button.setText("Get schemas");
+			button.setLayoutData(gd);		
+	    	button.addSelectionListener( new SelectionListener() {
+	            public void widgetSelected(SelectionEvent arg0) {
+	            	actionGetMetaData(GET_SCHEMAS);
+	            }
+	            public void widgetDefaultSelected(SelectionEvent arg0) {
+	            }
+	        });
+		}
+		
 		{
 			Button button = new Button(panel, SWT.NONE);
 			button.setText("Get tables");
@@ -744,56 +770,9 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	            }
 	        });
 		}
+		
 	}
-	//----------------------------------------------------------------------------------------------
-	/**
-	 * Creates the 2nd set of buttons
-	 * @param container
-	 */
-	private void createTabFolder3Panel3(Composite container) 
-	{
-		GridData gdPanel = new GridData();
-		gdPanel.verticalAlignment = SWT.BEGINNING ;
-		//gdPanel.widthHint = 200 ;
 
-		Composite panel = new Composite(container, SWT.NONE  );
-		GridLayout gl = new GridLayout ();
-		gl.numColumns = 1;
-		gl.marginHeight = 12;
-		gl.marginLeft = 20 ;
-		panel.setLayout(gl);
-		panel.setLayoutData(gdPanel);
-
-		GridData gd = new GridData();
-		gd.widthHint = 120;
-		gd.verticalAlignment = SWT.BEGINNING ;
-		{
-			Button button = new Button(panel, SWT.NONE);
-			button.setText("Get catalogs");
-			button.setLayoutData(gd);
-	    	button.addSelectionListener( new SelectionListener() {
-	            public void widgetSelected(SelectionEvent arg0) {
-	            	actionGetMetaData(GET_CATALOGS);
-	            }
-	            public void widgetDefaultSelected(SelectionEvent arg0) {
-	            }
-	        });
-		}
-
-		{
-	    	Button button = new Button(panel, SWT.NONE);
-			button.setText("Get schemas");
-			button.setLayoutData(gd);		
-	    	button.addSelectionListener( new SelectionListener() {
-	            public void widgetSelected(SelectionEvent arg0) {
-	            	actionGetMetaData(GET_SCHEMAS);
-	            }
-	            public void widgetDefaultSelected(SelectionEvent arg0) {
-	            }
-	        });
-		}
-
-	}
 	//----------------------------------------------------------------------------------------------
 	private void createTabFolder3Fields(Composite container) 
 	{
@@ -801,8 +780,6 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 		createTabFolder3Panel1(container);
 		
 		createTabFolder3Panel2(container);
-		
-		createTabFolder3Panel3(container);
 		
 		//--- ROW 2 ( Span 3 ) : the text area used to print the result
 		GridData gd = new GridData();
@@ -815,14 +792,14 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	}
 	
 	//----------------------------------------------------------------------------------------------
-	private Text createTextWithLabel(Composite container, String sLabel, GridData gridData, boolean b ) 
+	private Text createTextWithLabel(Composite container, String sLabel, GridData gridData, boolean isEnabled ) 
 	{
 		Label label = new Label(container, SWT.NONE);
-		label.setText( sLabel + " : ");
+		label.setText( sLabel);
 		
 		Text text = new Text(container, SWT.BORDER);
 		text.setLayoutData(gridData);
-		text.setEnabled(b);
+		text.setEnabled(isEnabled);
 		return text ;
 	}	
 	
@@ -1434,9 +1411,9 @@ import org.telosys.tools.repository.changelog.ChangeLog;
     	if ( db != null ) {
     		String sMsg = "Do you realy want to delete this database configuration ?" 
     			+ "\n\n" 
-    			+ ". Id : " + db.getDatabaseId() 
+    			+ "Id : " + db.getDatabaseId() 
     			+ "\n" 
-    			+ ". Name : " + db.getDatabaseName()  ;
+    			+ "Name : " + db.getDatabaseName()  ;
     		if ( MsgBox.confirm(" Confirm generation", sMsg) )
     		{
     	    	DatabasesConfigurations databasesConfigurations = _editor.getDatabasesConfigurations() ;
