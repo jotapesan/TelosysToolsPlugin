@@ -13,7 +13,7 @@ public class VariableItem extends Variable implements ITableItem
 
 	public static final String VALUE = "value";
 
-	private String sFirstCol = "¤";
+	private String sFirstCol = "Â¤";
 //	private String sVariableName;
 //	private String sVariableValue;
 	
@@ -42,7 +42,7 @@ public class VariableItem extends Variable implements ITableItem
 		switch ( columnIndex ) 
 		{
 		case 0 :
-			ret = "¤" ;
+			ret = "Â¤" ;
 			break;
 		case 1 :
 			//ret = this.sVariableName ;

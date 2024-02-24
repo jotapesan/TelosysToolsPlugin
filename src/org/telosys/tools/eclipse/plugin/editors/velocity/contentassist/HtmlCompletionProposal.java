@@ -52,7 +52,7 @@ public class HtmlCompletionProposal implements ICompletionProposal,
 				// DefaultInformationControl infoControl = new
 				// DefaultInformationControl(parent, new
 				// HTMLTextPresenter(true));
-				// TODO Revoir la génération du conteneur HTML.
+				// TODO Revoir la gÃ©nÃ©ration du conteneur HTML.
 				BrowserInformationControl browser = new BrowserInformationControl(
 						parent, null, false);
 

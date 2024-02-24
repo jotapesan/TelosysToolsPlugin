@@ -170,7 +170,7 @@ import org.telosys.tools.repository.model.RepositoryModel;
 //		This value is only relevant if setExpandHorizontal(true) has been set. 
 //		scrolledForm.setMinWidth(700);
 
-//		form.setExpandHorizontal(false); // tout bout à bout !
+//		form.setExpandHorizontal(false); // tout bout Ã  bout !
 //		form.setExpandVertical(false);
 		
 		Composite scrolledFormBody = scrolledForm.getBody();
@@ -702,6 +702,7 @@ import org.telosys.tools.repository.model.RepositoryModel;
     {
         combo.addSelectionListener( new SelectionAdapter() 
         {
+            @Override
             public void widgetSelected(SelectionEvent event)
             {
         		//log(this, "Tables combo listener : widgetSelected()" );

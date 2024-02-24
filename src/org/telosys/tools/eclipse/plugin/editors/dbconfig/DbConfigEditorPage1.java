@@ -634,21 +634,20 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	 * Creates the set of label + input field
 	 * @param container
 	 */
-	private void createTabFolder3Panel1(Composite container) {
+	private int createTabFolder3Panel1(Composite container) {
 		GridData gdPanel = new GridData();
 		gdPanel.verticalAlignment = SWT.BEGINNING ;
-		gdPanel.widthHint = 600 ;
+		gdPanel.widthHint = 650 ;
 		
 		Composite panel = new Composite(container, SWT.NONE );
-		GridLayout gridLayout = new GridLayout ();
-		gridLayout.numColumns = 2;
+		GridLayout gridLayout = new GridLayout(2, false);		
 		gridLayout.marginHeight = 12;
 		panel.setLayout(gridLayout);
 		panel.setLayoutData(gdPanel);
 
 		{
 			GridData gd = new GridData();
-			gd.widthHint = 320;
+			gd.widthHint = 350;
 			gd.verticalAlignment = SWT.BEGINNING ;
 
 			_tMetaDataCatalog = createTextWithLabel(panel, "Catalog ('!' for null) ", gd, true );
@@ -670,22 +669,22 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 			bindViewToModel(_tMetaDataTableInclude, "setMetadataTableNameInclude", String.class);
 			bindViewToModel(_tMetaDataTableExclude, "setMetadataTableNameExclude", String.class);
 		}
+		return gdPanel.widthHint;
 	}
 	//----------------------------------------------------------------------------------------------
 	/**
 	 * Creates the 1rst set of buttons 
 	 * @param container
 	 */
-	private void createTabFolder3Panel2(Composite container) {
+	private int createTabFolder3Panel2(Composite container) {
 		GridData gdPanel = new GridData();
 		gdPanel.verticalAlignment = SWT.BEGINNING ;
 		//gdPanel.widthHint = 200 ;
 
 		Composite panel = new Composite(container, SWT.NONE );
-		GridLayout gl = new GridLayout ();
-		gl.numColumns = 1;
+		GridLayout gl = new GridLayout (1, false);
 		gl.marginHeight = 12;
-		gl.marginLeft = 20 ;
+		gl.marginLeft = 10;		
 		panel.setLayout(gl);
 		panel.setLayoutData(gdPanel);
 
@@ -770,6 +769,7 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	            }
 	        });
 		}
+		return gd.widthHint + gl.marginLeft / 2;
 		
 	}
 
@@ -777,13 +777,13 @@ import org.telosys.tools.repository.changelog.ChangeLog;
 	private void createTabFolder3Fields(Composite container) 
 	{
 		//--- ROW 1
-		createTabFolder3Panel1(container);
+		int width = createTabFolder3Panel1(container);
 		
-		createTabFolder3Panel2(container);
+		width+=createTabFolder3Panel2(container);
 		
 		//--- ROW 2 ( Span 3 ) : the text area used to print the result
 		GridData gd = new GridData();
-		gd.widthHint  = 700;
+		gd.widthHint  = width;
 		gd.heightHint = 340 ;
 		gd.horizontalSpan = 3 ;
 		_tMetaData = new Text (container, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL );

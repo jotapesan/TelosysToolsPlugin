@@ -106,17 +106,17 @@ class TableViewerCellModifier implements ICellModifier
 					if ( index < 0 ) {
 						MsgBox.error("getValue(element, '" + property + "') : "
 								+ "\n Cannot found index for type '" + sJavaType + "' !");
-						return (new Integer(0));
+						return (Integer.valueOf(0));
 					}
 					else {
-						return new Integer(index); // OK
+						return Integer.valueOf(index); // OK
 					}
 				}
 				else {
 					MsgBox.error("getValue(element, '" + property + "') : "
 							+ "\n 'Java Type' value is null !");
 				}
-				return (new Integer(0));
+				return (Integer.valueOf(0));
 				
 			}
 
